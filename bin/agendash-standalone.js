@@ -28,6 +28,8 @@ const agenda = new Agenda().database(
     useNewUrlParser: true,
   }
 );
+agenda.sort({ nextRunAt: 1 });
+
 app.use('/', require('../app')(agenda, {
   title: program.title
 }));
