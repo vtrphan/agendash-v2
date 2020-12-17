@@ -19,7 +19,15 @@ if (!program.db) {
 
 const app = express();
 
-const agenda = new Agenda().database(program.db, program.collection);
+const agenda = new Agenda().database(
+  program.db,
+  program.collection,
+  {
+    ssl: true,
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  }
+);
 app.use('/', require('../app')(agenda, {
   title: program.title
 }));
